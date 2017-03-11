@@ -1,0 +1,20 @@
+{
+  "name": "AwesomeAutoComplete",
+  "version": "1.0.0",
+  "description": "Awesome Auto-complete",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/cout970/AwesomeAutoComplete",
+  "keywords": [],
+  "author": "cout970",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.1",
+    "kotlin": "1.1.0"
+  },
+  "dependencies": {
+    "jquery.terminal": "^1.0.10"
+  }
+}
