@@ -88,30 +88,32 @@ function createAutocomplete(term) {
     let line = term.get_command();
     let auto = kotlinInterface.getAutoCompleteOptions(line, term.cmd().position());
 
-    // options
-    for (let i = 0; i < auto.length; i++) {
-        let option = document.createElement("div");
-        if (i === 0) {
-            option.setAttribute("class", "autocomplete-option select");
-        } else {
-            option.setAttribute("class", "autocomplete-option");
+    if(auto.length != 0){
+        // options
+        for (let i = 0; i < auto.length; i++) {
+            let option = document.createElement("div");
+            if (i === 0) {
+                option.setAttribute("class", "autocomplete-option select");
+            } else {
+                option.setAttribute("class", "autocomplete-option");
+            }
+            option.textContent = auto[i];
+            elem.appendChild(option);
         }
-        option.textContent = auto[i];
-        elem.appendChild(option);
+
+        // cursor pos
+        let cursor = document.getElementsByClassName("cursor")[0];
+        let pos = findPos(cursor);
+
+        // apply pos
+        elem.style.position = "absolute";
+        elem.style.left = (pos[0] - 4) + 'px';
+        elem.style.top = (pos[1] + 16) + 'px';
+
+        // debug
+        let debug = document.getElementById("debug");
+        debug.appendChild(elem);
     }
-
-    // cursor pos
-    let cursor = document.getElementsByClassName("cursor")[0];
-    let pos = findPos(cursor);
-
-    // apply pos
-    elem.style.position = "absolute";
-    elem.style.left = (pos[0] - 4) + 'px';
-    elem.style.top = (pos[1] + 16) + 'px';
-
-    // debug
-    let debug = document.getElementById("debug");
-    debug.appendChild(elem);
 }
 
 function log(any) {
